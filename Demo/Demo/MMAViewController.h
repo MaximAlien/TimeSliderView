@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TimeSliderView.h"
 
-@interface MMAViewController : UIViewController
+@interface MMAViewController : UIViewController <TimeSliderViewDelegate>
+{
+    TimeSliderView *timeSliderView;
+    UILabel *timeSelectorLabel;
+    int currentHour;
+    int currentMinute;
+    NSString *splitString;
+}
 
 @end

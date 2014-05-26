@@ -21,6 +21,7 @@
 		6D136910193325AD008463BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1368F2193325AD008463BF /* UIKit.framework */; };
 		6D136918193325AD008463BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D136916193325AD008463BF /* InfoPlist.strings */; };
 		6D13691A193325AD008463BF /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D136919193325AD008463BF /* DemoTests.m */; };
+		6D1369251933265F008463BF /* TimeSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1369241933265F008463BF /* TimeSliderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		6D136915193325AD008463BF /* DemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DemoTests-Info.plist"; sourceTree = "<group>"; };
 		6D136917193325AD008463BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D136919193325AD008463BF /* DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoTests.m; sourceTree = "<group>"; };
+		6D1369231933265F008463BF /* TimeSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSliderView.h; path = ../TimeSliderView/TimeSliderView.h; sourceTree = "<group>"; };
+		6D1369241933265F008463BF /* TimeSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSliderView.m; path = ../TimeSliderView/TimeSliderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 		6D1368E2193325AD008463BF = {
 			isa = PBXGroup;
 			children = (
+				6D1369231933265F008463BF /* TimeSliderView.h */,
+				6D1369241933265F008463BF /* TimeSliderView.m */,
 				6D1368F4193325AD008463BF /* Demo */,
 				6D136913193325AD008463BF /* DemoTests */,
 				6D1368ED193325AD008463BF /* Frameworks */,
@@ -250,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D1369251933265F008463BF /* TimeSliderView.m in Sources */,
 				6D136905193325AD008463BF /* MMAViewController.m in Sources */,
 				6D1368FF193325AD008463BF /* MMAAppDelegate.m in Sources */,
 				6D1368FB193325AD008463BF /* main.m in Sources */,
