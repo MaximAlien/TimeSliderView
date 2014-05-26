@@ -19,8 +19,6 @@
 
 @end
 
-
-
 @interface TimeSliderView : UIView
 
 @property (nonatomic, retain) id<TimeSliderViewDelegate> delegate;

@@ -19,12 +19,13 @@
 @end
 
 @implementation TimeSliderView
+
 - (void)initialize
 {
-    CGRect positionIndicatorFrame = self.bounds;
-    positionIndicatorFrame.size.height = 80.0f;
+    CGRect indicatorFrame = self.bounds;
+    indicatorFrame.size.height = 80.0f;
     
-    _indicatorView = [[UIView alloc] initWithFrame:positionIndicatorFrame];
+    _indicatorView = [[UIView alloc] initWithFrame:indicatorFrame];
     [self addSubview:_indicatorView];
     _indicatorView.backgroundColor = [UIColor clearColor];
     
@@ -37,10 +38,12 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    
     if (self)
     {
         [self initialize];
     }
+    
     return self;
 }
 
@@ -53,16 +56,6 @@
         [self initialize];
     }
     
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)decoder
-{
-    self = [super initWithCoder:decoder];
-    if (self)
-    {
-        [self initialize];
-    }
     return self;
 }
 
@@ -86,19 +79,15 @@
     
     if (animated)
     {
-        [UIView animateWithDuration:0.3
-                              delay:0.0
-                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseIn
-                         animations:^{
-                             self.indicatorView.frame = newFrame;
+        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseIn animations:^{
+            self.indicatorView.frame = newFrame;
+        }
+                         completion:^(BOOL finished) {
+                             if ([self.delegate respondsToSelector:@selector(timeSliderViewDidStopMoving:)])
+                             {
+                                 [self.delegate timeSliderViewDidStopMoving:self];
+                             }
                          }
-                         completion:^(BOOL finished)
-         {
-             if ([self.delegate respondsToSelector:@selector(timeSliderViewDidStopMoving:)])
-             {
-                 [self.delegate timeSliderViewDidStopMoving:self];
-             }
-         }
          ];
     }
     else
@@ -117,7 +106,6 @@
     }
 }
 
-#pragma mark - peoperties
 - (void)setPositionIndicator:(UIView *)indicatorView
 {
     CGRect origFrame = indicatorView.frame;
@@ -130,8 +118,6 @@
     
     [self addSubview:indicatorView];
 }
-
-#pragma mark - touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -159,12 +145,12 @@
         UITouch *touch = [touches anyObject];
         CGPoint touchCoord = [touch locationInView:self];
         
-        CGFloat trueHeight = self.frame.size.height - self.indicatorView.frame.size.height;
+        CGFloat height = self.frame.size.height - self.indicatorView.frame.size.height;
         touchCoord.y -= indicatorYOffset;
-        touchCoord.y = MIN(touchCoord.y, trueHeight);
+        touchCoord.y = MIN(touchCoord.y, height);
         touchCoord.y = MAX(touchCoord.y, 0);
         
-        self.sliderValue = touchCoord.y / trueHeight;
+        self.sliderValue = touchCoord.y / height;
         
         if ([self.delegate respondsToSelector:@selector(timeSliderViewDidChangeValue:)])
         {
