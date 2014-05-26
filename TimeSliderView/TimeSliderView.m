@@ -170,16 +170,16 @@
         CGFloat sliderY = self.indicatorView.frame.origin.y;            // Stores slider Y position
         
         CGFloat divHeight = trueHeight / (24 * 12);
-        int hr = self.hour * 12;
+        long hr = self.hour * 12;
         
         if (touchCoord.y > sliderY)
         {
-            int min = (self.minute + 5) / 5;    // from 1 to 12
+            long min = (self.minute + 5) / 5;    // from 1 to 12
             sliderY = (divHeight * (hr + min)) / trueHeight;
         }
         else
         {
-            int min = (self.minute - 5) / 5;
+            long min = (self.minute - 5) / 5;
             sliderY = divHeight * (hr + min) / trueHeight;
         }
         
@@ -195,9 +195,9 @@
     CGFloat sliderY = 0.0;
     
     CGFloat divHeight = trueHeight / (24 * 12);
-    int hr = self.hour * 12;
+    long hr = self.hour * 12;
     
-    int min = self.minute / 5;
+    long min = self.minute / 5;
     sliderY = (divHeight * (hr + min)) / trueHeight;
     
     [self setSliderValue: sliderY animated:YES];

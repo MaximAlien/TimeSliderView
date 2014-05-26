@@ -24,8 +24,8 @@
 @property (nonatomic, retain) id<TimeSliderViewDelegate> delegate;
 @property (nonatomic, retain) UIView *indicatorView;
 @property (nonatomic, assign) CGFloat sliderValue;
-@property (nonatomic, assign) int hour;
-@property (nonatomic, assign) int minute;
+@property (nonatomic, assign) long hour;
+@property (nonatomic, assign) long minute;
 
 - (void)setPositionIndicator:(UIView *)indicatorView;
 - (void)setSliderValue:(CGFloat)value;
