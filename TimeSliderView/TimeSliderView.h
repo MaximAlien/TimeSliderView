@@ -20,14 +20,20 @@
 @end
 
 @interface TimeSliderView : UIView
+{
+    int currentHour;
+    int currentMinute;
+    NSString *splitString;
+}
 
 @property (nonatomic, retain) id<TimeSliderViewDelegate> delegate;
 @property (nonatomic, retain) UIView *indicatorView;
 @property (nonatomic, assign) CGFloat sliderValue;
 @property (nonatomic, assign) long hour;
 @property (nonatomic, assign) long minute;
+@property (nonatomic, retain) UILabel *timeSelectorLabel;
 
-- (void)setPositionIndicator:(UIView *)indicatorView;
+- (void)setIndicatorView:(UIView *)indicatorView;
 - (void)setSliderValue:(CGFloat)value;
 - (void)setSliderValue:(CGFloat)value animated:(BOOL)animated;
 - (void)placeIndicatorView;

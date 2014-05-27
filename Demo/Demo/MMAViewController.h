@@ -12,10 +12,6 @@
 @interface MMAViewController : UIViewController <TimeSliderViewDelegate>
 {
     TimeSliderView *timeSliderView;
-    UILabel *timeSelectorLabel;
-    int currentHour;
-    int currentMinute;
-    NSString *splitString;
 }
 
 @end

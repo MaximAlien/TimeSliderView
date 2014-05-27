@@ -8,6 +8,13 @@
 
 #import "TimeSliderView.h"
 
+static NSString *HourFormat24 = @"HH:mm";
+static NSString *HourFormat12 = @"hh:mm a";
+static int Hour = 0;
+static int Minute = 0;
+
+const BOOL Is24HourFormat = NO;
+
 @interface TimeSliderView ()
 {
     BOOL isIndicatorTouched;
@@ -27,13 +34,176 @@
     
     _indicatorView = [[UIView alloc] initWithFrame:indicatorFrame];
     [self addSubview:_indicatorView];
-    _indicatorView.backgroundColor = [UIColor clearColor];
+    _indicatorView.backgroundColor = [UIColor grayColor];
     
     isIndicatorTouched = NO;
     indicatorYOffset = 0.0f;
     
     _sliderValue = 0.0f;
+    
+    _timeSelectorLabel = [[UILabel alloc] init];
+    _timeSelectorLabel.textAlignment = NSTextAlignmentCenter;
+    _timeSelectorLabel.frame = CGRectMake(0, 0, 80, 50);
+    [_timeSelectorLabel setTextColor:[UIColor whiteColor]];
+    [_timeSelectorLabel setBackgroundColor:[UIColor lightGrayColor]];
+    
+    [self setIndicatorView:_timeSelectorLabel];
+    
+    int hour = _sliderValue * 24;
+    float valFloat = _sliderValue * 24;
+    int minute = (valFloat - hour) * 60;
+    NSString *splitStr = @"";
+    BOOL is24HourFormat = Is24HourFormat;
+    
+    if (!is24HourFormat)
+    {
+        if (hour == 0)
+        {
+            splitStr = @"am";
+            hour = 12;
+        }
+        else if ((hour > 0) && (hour < 12))
+        {
+            splitStr = @"am";
+        }
+        else if (hour == 12)
+        {
+            splitStr = @"pm";
+            hour = 12;
+        }
+        else if ((hour > 12) && (hour < 24))
+        {
+            splitStr = @"pm";
+            hour = hour - 12;
+        }
+        else if (hour == 24)
+        {
+            if (minute == 0)
+            {
+                splitStr = @"pm";
+                hour = 11;
+                minute = 59;
+            }
+            else
+            {
+                splitStr = @"pm";
+                hour = hour - 12;
+            }
+        }
+        
+        NSString *str = [NSString stringWithFormat:@"%d:%0*d %@", hour, 2, minute, splitStr];
+        
+        _timeSelectorLabel.text = str;
+    }
+    else
+    {
+        if (minute == 24)
+        {
+            if (minute == 0)
+            {
+                hour = 23;
+                minute = 59;
+            }
+        }
+        
+        NSString *str = [NSString stringWithFormat:@"%0*d:%0*d", 2, hour, 2, minute];
+        _timeSelectorLabel.text = str;
+    }
 }
+
+- (void)updateSlider
+{
+    float sliderValue = _sliderValue;
+    
+    currentHour = sliderValue * 24;
+    float valFloat = sliderValue * 24;
+    currentMinute = (valFloat - currentHour) * 60; // transforming to minutes
+    
+    if (currentMinute % 5 != 0)
+    {
+        currentMinute += 1;
+        
+        if (currentMinute == 60)
+        {
+            currentHour += 1;
+            currentMinute = 0;
+        }
+    }
+    
+    _hour = currentHour;
+    _minute = currentMinute;
+    
+    BOOL is24HourFormat = Is24HourFormat;
+    
+    if (!is24HourFormat)
+    {
+        if (currentMinute % 5 == 0)
+        {
+            splitString = @"";
+            
+            if (currentHour == 0)
+            {
+                splitString = @"am";
+                currentHour = 12;
+            }
+            else if ((currentHour > 0) && (currentHour < 12))
+            {
+                splitString = @"am";
+            }
+            else if (currentHour == 12)
+            {
+                splitString = @"pm";
+                currentHour = 12;
+            }
+            else if ((currentHour > 12) && (currentHour < 24))
+            {
+                splitString = @"pm";
+                currentHour = currentHour - 12;
+            }
+            else if (currentHour == 24)
+            {
+                if (currentMinute == 0)
+                {
+                    splitString = @"pm";
+                    currentHour = 11;
+                    currentMinute = 59;
+                }
+                else
+                {
+                    splitString = @"pm";
+                    currentHour = currentHour - 12;
+                }
+            }
+            
+            Hour = currentHour;
+            Minute = currentMinute;
+            
+            NSString *str = [NSString stringWithFormat:@"%d:%0*d %@", currentHour, 2, currentMinute, splitString];
+            _timeSelectorLabel.text = str;
+        }
+    }
+    else
+    {
+        if (currentMinute % 5 == 0)
+        {
+            if (currentHour == 24)
+            {
+                if (currentMinute == 0)
+                {
+                    currentHour = 23;
+                    currentMinute = 59;
+                }
+            }
+            
+            Hour = currentHour;
+            Minute = currentMinute;
+            
+            NSString *str = [NSString stringWithFormat:@"%0*d:%0*d", 2, currentHour, 2, currentMinute];
+            _timeSelectorLabel.text = str;
+        }
+    }
+}
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -103,10 +273,11 @@
     if ([self.delegate respondsToSelector:@selector(timeSliderViewDidChangeValue:)])
     {
         [self.delegate timeSliderViewDidChangeValue:self];
+        [self updateSlider];
     }
 }
 
-- (void)setPositionIndicator:(UIView *)indicatorView
+- (void)setIndicatorView:(UIView *)indicatorView
 {
     CGRect origFrame = indicatorView.frame;
     origFrame.origin.y = indicatorView.frame.origin.y;
@@ -155,6 +326,7 @@
         if ([self.delegate respondsToSelector:@selector(timeSliderViewDidChangeValue:)])
         {
             [self.delegate timeSliderViewDidChangeValue:self];
+            [self updateSlider];
         }
     }
 }
