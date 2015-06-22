@@ -1,18 +1,18 @@
 //
-//  MMAViewController.m
+//  ViewController.m
 //  Demo
 //
 //  Created by maxim.makhun on 5/26/14.
 //  Copyright (c) 2014 MMA. All rights reserved.
 //
 
-#import "MMAViewController.h"
+#import "ViewController.h"
 
-@interface MMAViewController ()
+@interface ViewController ()
 
 @end
 
-@implementation MMAViewController
+@implementation ViewController
 
 - (void)viewDidLoad
 {

@@ -12,11 +12,12 @@
 		6D1368F3193325AD008463BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1368F2193325AD008463BF /* UIKit.framework */; };
 		6D1368F9193325AD008463BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D1368F7193325AD008463BF /* InfoPlist.strings */; };
 		6D1368FB193325AD008463BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1368FA193325AD008463BF /* main.m */; };
-		6D1368FF193325AD008463BF /* MMAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1368FE193325AD008463BF /* MMAAppDelegate.m */; };
+		6D1368FF193325AD008463BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1368FE193325AD008463BF /* AppDelegate.m */; };
 		6D136902193325AD008463BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D136900193325AD008463BF /* Main.storyboard */; };
-		6D136905193325AD008463BF /* MMAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D136904193325AD008463BF /* MMAViewController.m */; };
+		6D136905193325AD008463BF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D136904193325AD008463BF /* ViewController.m */; };
 		6D136907193325AD008463BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D136906193325AD008463BF /* Images.xcassets */; };
 		6D1369251933265F008463BF /* TimeSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1369241933265F008463BF /* TimeSliderView.m */; };
+		6D9EA3F21B38A9E300F4F4D4 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D9EA3F11B38A9E300F4F4D4 /* Launch Screen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,14 +29,15 @@
 		6D1368F8193325AD008463BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D1368FA193325AD008463BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6D1368FC193325AD008463BF /* Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Prefix.pch"; sourceTree = "<group>"; };
-		6D1368FD193325AD008463BF /* MMAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAAppDelegate.h; sourceTree = "<group>"; };
-		6D1368FE193325AD008463BF /* MMAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAAppDelegate.m; sourceTree = "<group>"; };
+		6D1368FD193325AD008463BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6D1368FE193325AD008463BF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6D136901193325AD008463BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6D136903193325AD008463BF /* MMAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAViewController.h; sourceTree = "<group>"; };
-		6D136904193325AD008463BF /* MMAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAViewController.m; sourceTree = "<group>"; };
+		6D136903193325AD008463BF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6D136904193325AD008463BF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6D136906193325AD008463BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D1369231933265F008463BF /* TimeSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSliderView.h; path = ../TimeSliderView/TimeSliderView.h; sourceTree = "<group>"; };
 		6D1369241933265F008463BF /* TimeSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSliderView.m; path = ../TimeSliderView/TimeSliderView.m; sourceTree = "<group>"; };
+		6D9EA3F11B38A9E300F4F4D4 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "../Launch Screen.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +86,13 @@
 		6D1368F4193325AD008463BF /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				6D1368FD193325AD008463BF /* MMAAppDelegate.h */,
-				6D1368FE193325AD008463BF /* MMAAppDelegate.m */,
-				6D136900193325AD008463BF /* Main.storyboard */,
-				6D136903193325AD008463BF /* MMAViewController.h */,
-				6D136904193325AD008463BF /* MMAViewController.m */,
+				6D1368FD193325AD008463BF /* AppDelegate.h */,
+				6D1368FE193325AD008463BF /* AppDelegate.m */,
+				6D136903193325AD008463BF /* ViewController.h */,
+				6D136904193325AD008463BF /* ViewController.m */,
 				6D136906193325AD008463BF /* Images.xcassets */,
+				6D136900193325AD008463BF /* Main.storyboard */,
+				6D9EA3F11B38A9E300F4F4D4 /* Launch Screen.xib */,
 				6D1368F5193325AD008463BF /* Supporting Files */,
 			);
 			path = Demo;
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D136907193325AD008463BF /* Images.xcassets in Resources */,
+				6D9EA3F21B38A9E300F4F4D4 /* Launch Screen.xib in Resources */,
 				6D1368F9193325AD008463BF /* InfoPlist.strings in Resources */,
 				6D136902193325AD008463BF /* Main.storyboard in Resources */,
 			);
@@ -173,8 +177,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D1369251933265F008463BF /* TimeSliderView.m in Sources */,
-				6D136905193325AD008463BF /* MMAViewController.m in Sources */,
-				6D1368FF193325AD008463BF /* MMAAppDelegate.m in Sources */,
+				6D136905193325AD008463BF /* ViewController.m in Sources */,
+				6D1368FF193325AD008463BF /* AppDelegate.m in Sources */,
 				6D1368FB193325AD008463BF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,7 +237,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -265,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

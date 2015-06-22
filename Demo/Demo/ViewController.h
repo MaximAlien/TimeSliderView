@@ -1,5 +1,5 @@
 //
-//  MMAViewController.h
+//  ViewController.h
 //  Demo
 //
 //  Created by maxim.makhun on 5/26/14.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TimeSliderView.h"
 
-@interface MMAViewController : UIViewController <TimeSliderViewDelegate>
+@interface ViewController : UIViewController <TimeSliderViewDelegate>
 {
     TimeSliderView *timeSliderView;
 }

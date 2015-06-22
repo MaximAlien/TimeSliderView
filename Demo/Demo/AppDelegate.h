@@ -1,5 +1,5 @@
 //
-//  MMAAppDelegate.h
+//  AppDelegate.h
 //  Demo
 //
 //  Created by maxim.makhun on 5/26/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MMAAppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
