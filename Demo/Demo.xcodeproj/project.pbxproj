@@ -16,23 +16,8 @@
 		6D136902193325AD008463BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D136900193325AD008463BF /* Main.storyboard */; };
 		6D136905193325AD008463BF /* MMAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D136904193325AD008463BF /* MMAViewController.m */; };
 		6D136907193325AD008463BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D136906193325AD008463BF /* Images.xcassets */; };
-		6D13690E193325AD008463BF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D13690D193325AD008463BF /* XCTest.framework */; };
-		6D13690F193325AD008463BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1368EE193325AD008463BF /* Foundation.framework */; };
-		6D136910193325AD008463BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1368F2193325AD008463BF /* UIKit.framework */; };
-		6D136918193325AD008463BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D136916193325AD008463BF /* InfoPlist.strings */; };
-		6D13691A193325AD008463BF /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D136919193325AD008463BF /* DemoTests.m */; };
 		6D1369251933265F008463BF /* TimeSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1369241933265F008463BF /* TimeSliderView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6D136911193325AD008463BF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6D1368E3193325AD008463BF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6D1368EA193325AD008463BF;
-			remoteInfo = Demo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6D1368EB193325AD008463BF /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,11 +34,6 @@
 		6D136903193325AD008463BF /* MMAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAViewController.h; sourceTree = "<group>"; };
 		6D136904193325AD008463BF /* MMAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAViewController.m; sourceTree = "<group>"; };
 		6D136906193325AD008463BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6D13690C193325AD008463BF /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D13690D193325AD008463BF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		6D136915193325AD008463BF /* DemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DemoTests-Info.plist"; sourceTree = "<group>"; };
-		6D136917193325AD008463BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6D136919193325AD008463BF /* DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoTests.m; sourceTree = "<group>"; };
 		6D1369231933265F008463BF /* TimeSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSliderView.h; path = ../TimeSliderView/TimeSliderView.h; sourceTree = "<group>"; };
 		6D1369241933265F008463BF /* TimeSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSliderView.m; path = ../TimeSliderView/TimeSliderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,16 +49,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6D136909193325AD008463BF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6D13690E193325AD008463BF /* XCTest.framework in Frameworks */,
-				6D136910193325AD008463BF /* UIKit.framework in Frameworks */,
-				6D13690F193325AD008463BF /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -88,7 +58,6 @@
 				6D1369231933265F008463BF /* TimeSliderView.h */,
 				6D1369241933265F008463BF /* TimeSliderView.m */,
 				6D1368F4193325AD008463BF /* Demo */,
-				6D136913193325AD008463BF /* DemoTests */,
 				6D1368ED193325AD008463BF /* Frameworks */,
 				6D1368EC193325AD008463BF /* Products */,
 			);
@@ -98,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				6D1368EB193325AD008463BF /* Demo.app */,
-				6D13690C193325AD008463BF /* DemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,7 +77,6 @@
 				6D1368EE193325AD008463BF /* Foundation.framework */,
 				6D1368F0193325AD008463BF /* CoreGraphics.framework */,
 				6D1368F2193325AD008463BF /* UIKit.framework */,
-				6D13690D193325AD008463BF /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -139,24 +106,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6D136913193325AD008463BF /* DemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				6D136919193325AD008463BF /* DemoTests.m */,
-				6D136914193325AD008463BF /* Supporting Files */,
-			);
-			path = DemoTests;
-			sourceTree = "<group>";
-		};
-		6D136914193325AD008463BF /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6D136915193325AD008463BF /* DemoTests-Info.plist */,
-				6D136916193325AD008463BF /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,24 +126,6 @@
 			productReference = 6D1368EB193325AD008463BF /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6D13690B193325AD008463BF /* DemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6D136920193325AD008463BF /* Build configuration list for PBXNativeTarget "DemoTests" */;
-			buildPhases = (
-				6D136908193325AD008463BF /* Sources */,
-				6D136909193325AD008463BF /* Frameworks */,
-				6D13690A193325AD008463BF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6D136912193325AD008463BF /* PBXTargetDependency */,
-			);
-			name = DemoTests;
-			productName = DemoTests;
-			productReference = 6D13690C193325AD008463BF /* DemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -204,11 +135,6 @@
 				CLASSPREFIX = MMA;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = MMA;
-				TargetAttributes = {
-					6D13690B193325AD008463BF = {
-						TestTargetID = 6D1368EA193325AD008463BF;
-					};
-				};
 			};
 			buildConfigurationList = 6D1368E6193325AD008463BF /* Build configuration list for PBXProject "Demo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -224,7 +150,6 @@
 			projectRoot = "";
 			targets = (
 				6D1368EA193325AD008463BF /* Demo */,
-				6D13690B193325AD008463BF /* DemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,14 +162,6 @@
 				6D136907193325AD008463BF /* Images.xcassets in Resources */,
 				6D1368F9193325AD008463BF /* InfoPlist.strings in Resources */,
 				6D136902193325AD008463BF /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6D13690A193325AD008463BF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6D136918193325AD008463BF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,23 +179,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6D136908193325AD008463BF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6D13691A193325AD008463BF /* DemoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6D136912193325AD008463BF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6D1368EA193325AD008463BF /* Demo */;
-			targetProxy = 6D136911193325AD008463BF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6D1368F7193325AD008463BF /* InfoPlist.strings */ = {
@@ -295,14 +196,6 @@
 				6D136901193325AD008463BF /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6D136916193325AD008463BF /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6D136917193325AD008463BF /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -404,46 +297,6 @@
 			};
 			name = Release;
 		};
-		6D136921193325AD008463BF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "DemoTests/DemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		6D136922193325AD008463BF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
-				INFOPLIST_FILE = "DemoTests/DemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -463,14 +316,7 @@
 				6D13691F193325AD008463BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		6D136920193325AD008463BF /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6D136921193325AD008463BF /* Debug */,
-				6D136922193325AD008463BF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
