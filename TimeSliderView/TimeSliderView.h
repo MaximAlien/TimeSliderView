@@ -11,8 +11,8 @@
 @class TimeSliderView;
 
 @protocol TimeSliderViewDelegate <NSObject>
-@optional
 
+@optional
 - (void)timeSliderViewDidChangeValue:(TimeSliderView *)sliderView;
 - (void)timeSliderViewWillStartMoving:(TimeSliderView *)sliderView;
 - (void)timeSliderViewDidStopMoving:(TimeSliderView *)sliderView;
@@ -21,21 +21,16 @@
 
 @interface TimeSliderView : UIView
 {
-    int currentHour;
-    int currentMinute;
-    NSString *splitString;
+    
 }
 
 @property (nonatomic, retain) id<TimeSliderViewDelegate> delegate;
-@property (nonatomic, retain) UIView *indicatorView;
 @property (nonatomic, assign) CGFloat sliderValue;
-@property (nonatomic, assign) long hour;
-@property (nonatomic, assign) long minute;
-@property (nonatomic, retain) UILabel *timeSelectorLabel;
+@property (nonatomic, strong) UILabel *timeSelectorLabel;
+@property (nonatomic) BOOL is24HourFormat;
+@property (nonatomic) NSUInteger minutesStep;
 
-- (void)setIndicatorView:(UIView *)indicatorView;
-- (void)setSliderValue:(CGFloat)value;
 - (void)setSliderValue:(CGFloat)value animated:(BOOL)animated;
-- (void)placeIndicatorView;
+- (void)placeIndicatorViewWithHour:(NSUInteger)hour andMinute:(NSUInteger)minute;
 
 @end

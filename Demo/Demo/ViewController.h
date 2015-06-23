@@ -11,7 +11,9 @@
 
 @interface ViewController : UIViewController <TimeSliderViewDelegate>
 {
-    TimeSliderView *timeSliderView;
+
 }
+
+@property (strong, nonatomic) TimeSliderView *timeSliderView;
 
 @end

@@ -18,19 +18,15 @@
 {
     [super viewDidLoad];
     
-    timeSliderView = [[TimeSliderView alloc] initWithFrame:CGRectMake(10, 30, 100, 300)];
-    timeSliderView.delegate = self;
-    [self.view addSubview:timeSliderView];
-}
-
-- (BOOL)prefersStatusBarHidden
-{
-    return NO;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+    self.timeSliderView = [[TimeSliderView alloc] initWithFrame:CGRectMake(10, 30, 100, 300)];
+    self.timeSliderView.delegate = self;
+    self.timeSliderView.minutesStep = 10;
+    self.timeSliderView.timeSelectorLabel.textColor = [UIColor whiteColor];
+    self.timeSliderView.timeSelectorLabel.backgroundColor = [UIColor lightGrayColor];
+    [self.timeSliderView setBackgroundColor:[UIColor greenColor]];
+    [self.view addSubview:self.timeSliderView];
+    
+    [self.timeSliderView placeIndicatorViewWithHour:1 andMinute:13];
 }
 
 - (void)timeSliderViewDidChangeValue:(TimeSliderView *)sliderView;
