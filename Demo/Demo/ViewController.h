@@ -10,9 +10,6 @@
 #import "TimeSliderView.h"
 
 @interface ViewController : UIViewController <TimeSliderViewDelegate>
-{
-
-}
 
 @property (strong, nonatomic) TimeSliderView *timeSliderView;
 

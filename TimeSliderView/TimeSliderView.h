@@ -20,9 +20,6 @@
 @end
 
 @interface TimeSliderView : UIView
-{
-    
-}
 
 @property (nonatomic, retain) id<TimeSliderViewDelegate> delegate;
 @property (nonatomic, assign) CGFloat sliderValue;

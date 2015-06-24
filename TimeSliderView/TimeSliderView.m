@@ -319,12 +319,12 @@ static int Minute = 0;
         
         if (touchCoord.y > sliderY)
         {
-            long min = (self.minute + self.minutesStep) / self.minutesStep;
+            long min = (self.minute + self.minutesStep) / 5;
             sliderY = (divHeight * (hr + min)) / trueHeight;
         }
         else
         {
-            long min = (self.minute - self.minutesStep) / self.minutesStep;
+            long min = (self.minute - self.minutesStep) / 5;
             sliderY = divHeight * (hr + min) / trueHeight;
         }
         

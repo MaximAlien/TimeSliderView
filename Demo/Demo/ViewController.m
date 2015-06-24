@@ -20,7 +20,7 @@
     
     self.timeSliderView = [[TimeSliderView alloc] initWithFrame:CGRectMake(10, 30, 100, 300)];
     self.timeSliderView.delegate = self;
-    self.timeSliderView.minutesStep = 10;
+    self.timeSliderView.minutesStep = 5;
     self.timeSliderView.timeSelectorLabel.textColor = [UIColor whiteColor];
     self.timeSliderView.timeSelectorLabel.backgroundColor = [UIColor lightGrayColor];
     [self.timeSliderView setBackgroundColor:[UIColor greenColor]];
