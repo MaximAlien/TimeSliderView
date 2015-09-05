@@ -128,6 +128,8 @@ static int Minute = 0;
 
 - (void)updateSlider
 {
+    assert(self.minutesStep % 5 == 0 && self.minutesStep < 60);
+
     float sliderValue = _sliderValue;
     
     currentHour = sliderValue * 24;
@@ -317,18 +319,22 @@ static int Minute = 0;
         CGFloat divHeight = trueHeight / (24 * 12);
         long hr = self.hour * 12;
         
+        // press was made below time indicator
         if (touchCoord.y > sliderY)
         {
             long min = (self.minute + self.minutesStep) / 5;
             sliderY = (divHeight * (hr + min)) / trueHeight;
         }
+        // press was made above time indicator
         else
         {
             long min = (self.minute - self.minutesStep) / 5;
             sliderY = divHeight * (hr + min) / trueHeight;
+        
+            NSLog(@"%f", sliderY);
         }
         
-        [self setSliderValue: sliderY animated:YES];
+        [self setSliderValue:sliderY animated:YES];
     }
     
     isIndicatorTouched = NO;
