@@ -29,5 +29,6 @@
 
 - (void)setSliderValue:(CGFloat)value animated:(BOOL)animated;
 - (void)placeIndicatorViewWithHour:(NSUInteger)hour andMinute:(NSUInteger)minute;
+- (void)placeIndicatorWithDate:(NSDate *)date;
 
 @end

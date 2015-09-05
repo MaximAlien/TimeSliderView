@@ -334,17 +334,30 @@ static int Minute = 0;
     isIndicatorTouched = NO;
 }
 
-- (void)placeIndicatorViewWithHour:(NSUInteger)hour andMinute:(NSUInteger)minute
+- (CGFloat)calculatePositionWithHour:(NSUInteger)hour andMinute:(NSUInteger)minute
 {
     CGFloat trueHeight = self.frame.size.height - self.timeSelectorLabel.frame.size.height;
-    CGFloat sliderY = 0.0;
     
     CGFloat divHeight = trueHeight / (24 * 12);
     long hr = hour * 12;
     long min = minute / 5;
-    sliderY = (divHeight * (hr + min)) / trueHeight;
     
-    [self setSliderValue: sliderY animated:YES];
+    return (divHeight * (hr + min)) / trueHeight;
+}
+
+- (void)placeIndicatorViewWithHour:(NSUInteger)hour andMinute:(NSUInteger)minute
+{
+    [self setSliderValue:[self calculatePositionWithHour:hour andMinute:minute] animated:YES];
+}
+
+- (void)placeIndicatorWithDate:(NSDate *)date
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *dateComponents = [calendar components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
+    
+    NSLog(@"Exact Hour: %ld, Minute: %ld", (long)dateComponents.hour, (long)dateComponents.minute);
+    
+    [self setSliderValue:[self calculatePositionWithHour:dateComponents.hour andMinute:dateComponents.minute] animated:YES];
 }
 
 @end

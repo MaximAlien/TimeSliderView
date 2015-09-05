@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D048EF91B9352B600232B50 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D048EF81B9352B600232B50 /* Launch Screen.xib */; };
 		6D1368EF193325AD008463BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1368EE193325AD008463BF /* Foundation.framework */; };
 		6D1368F1193325AD008463BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1368F0193325AD008463BF /* CoreGraphics.framework */; };
 		6D1368F3193325AD008463BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1368F2193325AD008463BF /* UIKit.framework */; };
@@ -17,10 +18,10 @@
 		6D136905193325AD008463BF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D136904193325AD008463BF /* ViewController.m */; };
 		6D136907193325AD008463BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D136906193325AD008463BF /* Images.xcassets */; };
 		6D1369251933265F008463BF /* TimeSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1369241933265F008463BF /* TimeSliderView.m */; };
-		6D9EA3F21B38A9E300F4F4D4 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D9EA3F11B38A9E300F4F4D4 /* Launch Screen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D048EF81B9352B600232B50 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		6D1368EB193325AD008463BF /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D1368EE193325AD008463BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6D1368F0193325AD008463BF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -37,7 +38,6 @@
 		6D136906193325AD008463BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D1369231933265F008463BF /* TimeSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSliderView.h; path = ../TimeSliderView/TimeSliderView.h; sourceTree = "<group>"; };
 		6D1369241933265F008463BF /* TimeSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSliderView.m; path = ../TimeSliderView/TimeSliderView.m; sourceTree = "<group>"; };
-		6D9EA3F11B38A9E300F4F4D4 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "../Launch Screen.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 				6D136904193325AD008463BF /* ViewController.m */,
 				6D136906193325AD008463BF /* Images.xcassets */,
 				6D136900193325AD008463BF /* Main.storyboard */,
-				6D9EA3F11B38A9E300F4F4D4 /* Launch Screen.xib */,
+				6D048EF81B9352B600232B50 /* Launch Screen.xib */,
 				6D1368F5193325AD008463BF /* Supporting Files */,
 			);
 			path = Demo;
@@ -163,7 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D136907193325AD008463BF /* Images.xcassets in Resources */,
-				6D9EA3F21B38A9E300F4F4D4 /* Launch Screen.xib in Resources */,
+				6D048EF91B9352B600232B50 /* Launch Screen.xib in Resources */,
 				6D1368F9193325AD008463BF /* InfoPlist.strings in Resources */,
 				6D136902193325AD008463BF /* Main.storyboard in Resources */,
 			);
