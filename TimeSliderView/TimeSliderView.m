@@ -20,8 +20,8 @@ static int Minute = 0;
     NSString *splitString;
 }
 
-@property (nonatomic, assign) NSUInteger hour;
-@property (nonatomic, assign) NSUInteger minute;
+@property (nonatomic, assign) int hour;
+@property (nonatomic, assign) int minute;
 
 - (void)initialize;
 
