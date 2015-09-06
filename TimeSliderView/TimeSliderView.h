@@ -12,6 +12,7 @@
 
 @protocol TimeSliderViewDelegate <NSObject>
 
+//TODO: rework delegate methods, extend
 @optional
 - (void)timeSliderViewDidChangeValue:(TimeSliderView *)sliderView;
 - (void)timeSliderViewWillStartMoving:(TimeSliderView *)sliderView;
@@ -25,7 +26,7 @@
 @property (nonatomic) CGFloat sliderValue;
 @property (nonatomic, strong) UILabel *timeSelectorLabel;
 @property (nonatomic) BOOL is24HourFormat;
-@property (nonatomic) int minutesStep;
+//TODO: Create accessor fields to get current hour and minutes (as int values) and as date/time
 
 // public methods
 - (void)setSliderValue:(CGFloat)value animated:(BOOL)animated;

@@ -10,6 +10,7 @@
 
 static int Hour = 0;
 static int Minute = 0;
+static const int MinutesStep = 5;
 
 @interface TimeSliderView ()
 {
@@ -134,7 +135,7 @@ static int Minute = 0;
     float valFloat = sliderValue * 24;
     currentMinute = (valFloat - currentHour) * 60;
     
-    if (currentMinute % self.minutesStep != 0)
+    if (currentMinute % MinutesStep != 0)
     {
         currentMinute += 1;
         
@@ -150,7 +151,7 @@ static int Minute = 0;
     
     if (!self.is24HourFormat)
     {
-        if (currentMinute % self.minutesStep == 0)
+        if (currentMinute % MinutesStep == 0)
         {
             splitString = @"";
             
@@ -197,7 +198,7 @@ static int Minute = 0;
     }
     else
     {
-        if (currentMinute % self.minutesStep == 0)
+        if (currentMinute % MinutesStep == 0)
         {
             if (currentHour == 24)
             {
@@ -319,16 +320,17 @@ static int Minute = 0;
         
         if (touchCoord.y > sliderY)
         {
-            long min = (self.minute + self.minutesStep) / 5;
+            long min = (self.minute + MinutesStep) / 5;
             sliderY = (divHeight * (hr + min)) / trueHeight;
         }
         else
         {
-            long min = (self.minute - self.minutesStep) / 5;
+            long min = (self.minute - MinutesStep) / 5;
             sliderY = divHeight * (hr + min) / trueHeight;
         }
         
-        [self setSliderValue: sliderY animated:YES];
+        [self updateSlider];
+        [self setSliderValue:sliderY animated:YES];
     }
     
     isIndicatorTouched = NO;
@@ -344,7 +346,7 @@ static int Minute = 0;
     long min = minute / 5;
     sliderY = (divHeight * (hr + min)) / trueHeight;
     
-    [self setSliderValue: sliderY animated:YES];
+    [self setSliderValue:sliderY animated:YES];
 }
 
 @end
