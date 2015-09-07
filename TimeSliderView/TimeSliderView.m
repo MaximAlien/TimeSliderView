@@ -10,6 +10,7 @@
 
 static int Hour = 0;
 static int Minute = 0;
+static const int MinutesStep = 5;
 
 @interface TimeSliderView ()
 {
@@ -20,8 +21,8 @@ static int Minute = 0;
     NSString *splitString;
 }
 
-@property (nonatomic, assign) NSUInteger hour;
-@property (nonatomic, assign) NSUInteger minute;
+@property (nonatomic, assign) int hour;
+@property (nonatomic, assign) int minute;
 
 - (void)initialize;
 
@@ -128,15 +129,13 @@ static int Minute = 0;
 
 - (void)updateSlider
 {
-    assert(self.minutesStep % 5 == 0 && self.minutesStep < 60);
-
     float sliderValue = _sliderValue;
     
     currentHour = sliderValue * 24;
     float valFloat = sliderValue * 24;
     currentMinute = (valFloat - currentHour) * 60;
     
-    if (currentMinute % self.minutesStep != 0)
+    if (currentMinute % MinutesStep != 0)
     {
         currentMinute += 1;
         
@@ -152,7 +151,7 @@ static int Minute = 0;
     
     if (!self.is24HourFormat)
     {
-        if (currentMinute % self.minutesStep == 0)
+        if (currentMinute % MinutesStep == 0)
         {
             splitString = @"";
             
@@ -199,7 +198,7 @@ static int Minute = 0;
     }
     else
     {
-        if (currentMinute % self.minutesStep == 0)
+        if (currentMinute % MinutesStep == 0)
         {
             if (currentHour == 24)
             {
@@ -322,13 +321,13 @@ static int Minute = 0;
         // press was made below time indicator
         if (touchCoord.y > sliderY)
         {
-            long min = (self.minute + self.minutesStep) / 5;
+            long min = (self.minute + MinutesStep) / 5;
             sliderY = (divHeight * (hr + min)) / trueHeight;
         }
         // press was made above time indicator
         else
         {
-            long min = (self.minute - self.minutesStep) / 5;
+            long min = (self.minute - MinutesStep) / 5;
             sliderY = divHeight * (hr + min) / trueHeight;
         
             NSLog(@"%f", sliderY);
@@ -343,7 +342,6 @@ static int Minute = 0;
 - (CGFloat)calculatePositionWithHour:(NSUInteger)hour andMinute:(NSUInteger)minute
 {
     CGFloat trueHeight = self.frame.size.height - self.timeSelectorLabel.frame.size.height;
-    
     CGFloat divHeight = trueHeight / (24 * 12);
     long hr = hour * 12;
     long min = minute / 5;
