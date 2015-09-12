@@ -25,8 +25,6 @@
     [self.timeSliderView setBackgroundColor:[UIColor greenColor]];
     [self.view addSubview:self.timeSliderView];
     
-    // [self.timeSliderView placeIndicatorViewWithHour:1 andMinute:13];
-    
     [self.timeSliderView placeIndicatorWithDate:[NSDate date]];
 }
 

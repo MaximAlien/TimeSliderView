@@ -295,7 +295,7 @@ static const int MinutesStep = 5;
         touchCoord.y = MIN(touchCoord.y, height);
         touchCoord.y = MAX(touchCoord.y, 0);
         
-        self.sliderValue = touchCoord.y / height;
+        [self setSliderValue:touchCoord.y / height animated:NO];
         
         if ([self.delegate respondsToSelector:@selector(timeSliderViewDidChangeValue:)])
         {
@@ -329,8 +329,6 @@ static const int MinutesStep = 5;
         {
             long min = (self.minute - MinutesStep) / 5;
             sliderY = divHeight * (hr + min) / trueHeight;
-        
-            NSLog(@"%f", sliderY);
         }
         
         [self setSliderValue:sliderY animated:YES];
