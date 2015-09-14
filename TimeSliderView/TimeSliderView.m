@@ -260,8 +260,9 @@ static const int MinutesStep = 5;
     if ([self.delegate respondsToSelector:@selector(timeSliderViewDidChangeValue:)])
     {
         [self.delegate timeSliderViewDidChangeValue:self];
-        [self updateSlider];
     }
+    
+    [self updateSlider];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -300,8 +301,9 @@ static const int MinutesStep = 5;
         if ([self.delegate respondsToSelector:@selector(timeSliderViewDidChangeValue:)])
         {
             [self.delegate timeSliderViewDidChangeValue:self];
-            [self updateSlider];
         }
+        
+        [self updateSlider];
     }
 }
 
@@ -329,8 +331,6 @@ static const int MinutesStep = 5;
         {
             long min = (self.minute - MinutesStep) / 5;
             sliderY = divHeight * (hr + min) / trueHeight;
-        
-            NSLog(@"%f", sliderY);
         }
         
         [self setSliderValue:sliderY animated:YES];
@@ -358,8 +358,6 @@ static const int MinutesStep = 5;
 {
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *dateComponents = [calendar components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
-    
-    NSLog(@"Exact Hour: %ld, Minute: %ld", (long)dateComponents.hour, (long)dateComponents.minute);
     
     [self setSliderValue:[self calculatePositionWithHour:dateComponents.hour andMinute:dateComponents.minute] animated:YES];
 }
