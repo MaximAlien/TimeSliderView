@@ -6,11 +6,8 @@
 //  Copyright (c) 2014 MMA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "TimeSliderView.h"
+@import UIKit;
 
-@interface ViewController : UIViewController <TimeSliderViewDelegate>
-
-@property (strong, nonatomic) TimeSliderView *timeSliderView;
+@interface ViewController : UIViewController
 
 @end

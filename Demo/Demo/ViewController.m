@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "TimeSliderView.h"
 
-@interface ViewController ()
+@interface ViewController () <TimeSliderViewDelegate>
+
+@property (strong, nonatomic) TimeSliderView *timeSliderView;
 
 @end
 
@@ -25,6 +28,21 @@
     [self.timeSliderView setBackgroundColor:[UIColor greenColor]];
     [self.view addSubview:self.timeSliderView];
     [self.timeSliderView placeIndicatorWithDate:[NSDate date]];
+}
+
+- (void)timeSliderViewDidChangeValue:(TimeSliderView *)sliderView
+{
+    NSLog(@"timeSliderViewDidChangeValue : %f", sliderView.sliderValue);
+}
+
+- (void)timeSliderViewWillStartMoving:(TimeSliderView *)sliderView
+{
+    NSLog(@"timeSliderViewWillStartMoving");
+}
+
+- (void)timeSliderViewDidStopMoving:(TimeSliderView *)sliderView
+{
+    NSLog(@"timeSliderViewWillStartMoving");
 }
 
 @end
