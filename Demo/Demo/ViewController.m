@@ -11,8 +11,6 @@
 
 @interface ViewController () <TimeSliderViewDelegate>
 
-@property (strong, nonatomic) TimeSliderView *timeSliderView;
-
 @end
 
 @implementation ViewController
@@ -21,13 +19,25 @@
 {
     [super viewDidLoad];
     
-    self.timeSliderView = [[TimeSliderView alloc] initWithFrame:CGRectMake(10, 30, 100, 300)];
-    self.timeSliderView.delegate = self;
-    self.timeSliderView.timeSelectorLabel.textColor = [UIColor whiteColor];
-    self.timeSliderView.timeSelectorLabel.backgroundColor = [UIColor lightGrayColor];
-    [self.timeSliderView setBackgroundColor:[UIColor greenColor]];
-    [self.view addSubview:self.timeSliderView];
-    [self.timeSliderView placeIndicatorWithDate:[NSDate date]];
+    TimeSliderView *verticalSliderView = [[TimeSliderView alloc] initWithFrame:CGRectMake(10, 30, 60, 300)];
+    verticalSliderView.delegate = self;
+    verticalSliderView.is24HourFormat = YES;
+    verticalSliderView.sliderOrientation = OrientationVertical;
+    verticalSliderView.timeSelectorLabel.textColor = [UIColor whiteColor];
+    verticalSliderView.timeSelectorLabel.backgroundColor = [UIColor lightGrayColor];
+    [verticalSliderView setBackgroundColor:[UIColor greenColor]];
+    [self.view addSubview:verticalSliderView];
+    [verticalSliderView placeIndicatorWithDate:[NSDate date]];
+    
+    TimeSliderView *horizontalSliderView = [[TimeSliderView alloc] initWithFrame:CGRectMake(10, 350, 300, 40)];
+    horizontalSliderView.delegate = self;
+    horizontalSliderView.is24HourFormat = YES;
+    horizontalSliderView.sliderOrientation = OrientationHorizontal;
+    horizontalSliderView.timeSelectorLabel.textColor = [UIColor whiteColor];
+    horizontalSliderView.timeSelectorLabel.backgroundColor = [UIColor lightGrayColor];
+    [horizontalSliderView setBackgroundColor:[UIColor greenColor]];
+    [self.view addSubview:horizontalSliderView];
+    [horizontalSliderView placeIndicatorWithDate:[NSDate date]];
 }
 
 - (void)timeSliderViewDidChangeValue:(TimeSliderView *)sliderView

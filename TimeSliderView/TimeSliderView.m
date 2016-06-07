@@ -15,8 +15,7 @@ static const int MinutesStep = 5;
 @property (nonatomic) int hour;
 @property (nonatomic) int minute;
 @property (nonatomic) BOOL isIndicatorTouched;
-@property (nonatomic) CGFloat indicatorYOffset;
-@property (nonatomic, strong) NSString *splitString;
+@property (nonatomic) CGFloat indicatorOffset;
 
 - (void)initialize;
 
@@ -46,120 +45,85 @@ static const int MinutesStep = 5;
 
 - (void)initialize {
     self.isIndicatorTouched = NO;
-    self.indicatorYOffset = 0.0f;
-    _sliderValue = 0.0f;
+    self.indicatorOffset = 0.0f;
+    self.sliderValue = 0.0f;
+}
+
+- (void)setSliderOrientation:(TimeSliderViewOrientation)sliderOrientation {
+    _sliderOrientation = sliderOrientation;
     
     self.timeSelectorLabel = [UILabel new];
     self.timeSelectorLabel.textAlignment = NSTextAlignmentCenter;
-    self.timeSelectorLabel.frame = CGRectMake(0, 0, self.bounds.size.width, 40);
+    
+    if (sliderOrientation == OrientationHorizontal) {
+        self.timeSelectorLabel.frame = CGRectMake(0, 0, 60, self.bounds.size.height);
+    } else if (sliderOrientation == OrientationVertical) {
+        self.timeSelectorLabel.frame = CGRectMake(0, 0, self.bounds.size.width, 35);
+    }
     
     [self addSubview:self.timeSelectorLabel];
-    
-    int hour = _sliderValue * 24;
-    float valFloat = _sliderValue * 24;
-    int minute = (valFloat - hour) * 60;
-    NSString *splitStr = @"";
-    
-    if (!self.is24HourFormat) {
-        if (hour == 0) {
-            splitStr = @"am";
-            hour = 12;
-        } else if ((hour > 0) && (hour < 12)) {
-            splitStr = @"am";
-        } else if (hour == 12) {
-            splitStr = @"pm";
-            hour = 12;
-        } else if ((hour > 12) && (hour < 24)) {
-            splitStr = @"pm";
-            hour = hour - 12;
-        } else if (hour == 24) {
-            if (minute == 0) {
-                splitStr = @"pm";
-                hour = 11;
-                minute = 59;
-            } else {
-                splitStr = @"pm";
-                hour = hour - 12;
-            }
-        }
-        
-        NSString *str = [NSString stringWithFormat:@"%d:%0*d %@", hour, 2, minute, splitStr];
-        
-        self.timeSelectorLabel.text = str;
-    } else {
-        if (minute == 24) {
-            if (minute == 0) {
-                hour = 23;
-                minute = 59;
-            }
-        }
-        
-        NSString *str = [NSString stringWithFormat:@"%0*d:%0*d", 2, hour, 2, minute];
-        self.timeSelectorLabel.text = str;
-    }
+    self.timeSelectorLabel.text = [self handleUpdate];
 }
 
-- (void)updateSlider {
-    float sliderValue = _sliderValue;
+- (NSString *)handleUpdate {
+    int hour = self.sliderValue * 24;
+    int minute = (self.sliderValue * 24 - hour) * 60;
+    NSString *str = self.timeSelectorLabel.text;
     
-    int currentHour = sliderValue * 24;
-    float valFloat = sliderValue * 24;
-    int currentMinute = (valFloat - currentHour) * 60;
-    
-    if (currentMinute % MinutesStep != 0) {
-        currentMinute += 1;
+    if (minute % MinutesStep != 0) {
+        minute += 1;
         
-        if (currentMinute == 60) {
-            currentHour += 1;
-            currentMinute = 0;
+        if (minute == 60) {
+            hour += 1;
+            minute = 0;
         }
     }
     
-    self.hour = currentHour;
-    self.minute = currentMinute;
+    self.hour = hour;
+    self.minute = minute;
     
-    if (!self.is24HourFormat) {
-        if (currentMinute % MinutesStep == 0) {
-            self.splitString = @"";
-            
-            if (currentHour == 0) {
-                self.splitString = @"am";
-                currentHour = 12;
-            } else if ((currentHour > 0) && (currentHour < 12)) {
-                self.splitString = @"am";
-            } else if (currentHour == 12) {
-                self.splitString = @"pm";
-                currentHour = 12;
-            } else if ((currentHour > 12) && (currentHour < 24)) {
-                self.splitString = @"pm";
-                currentHour = currentHour - 12;
-            } else if (currentHour == 24) {
-                if (currentMinute == 0) {
-                    self.splitString = @"pm";
-                    currentHour = 11;
-                    currentMinute = 59;
-                } else {
-                    self.splitString = @"pm";
-                    currentHour = currentHour - 12;
+    if (self.is24HourFormat) {
+        if (minute % MinutesStep == 0) {
+            if (hour == 24) {
+                if (minute == 0) {
+                    hour = 23;
+                    minute = 59;
                 }
             }
             
-            NSString *str = [NSString stringWithFormat:@"%d:%0*d %@", currentHour, 2, currentMinute, self.splitString];
-            self.timeSelectorLabel.text = str;
+            str = [NSString stringWithFormat:@"%0*d:%0*d", 2, hour, 2, minute];
         }
     } else {
-        if (currentMinute % MinutesStep == 0) {
-            if (currentHour == 24) {
-                if (currentMinute == 0) {
-                    currentHour = 23;
-                    currentMinute = 59;
+        if (minute % MinutesStep == 0) {
+            
+            NSString *splitStr = @"";
+            if (hour == 0) {
+                splitStr = @"am";
+                hour = 12;
+            } else if ((hour > 0) && (hour < 12)) {
+                splitStr = @"am";
+            } else if (hour == 12) {
+                splitStr = @"pm";
+                hour = 12;
+            } else if ((hour > 12) && (hour < 24)) {
+                splitStr = @"pm";
+                hour = hour - 12;
+            } else if (hour == 24) {
+                if (hour == 0) {
+                    splitStr = @"pm";
+                    hour = 11;
+                    minute = 59;
+                } else {
+                    splitStr = @"pm";
+                    hour = hour - 12;
                 }
             }
             
-            NSString *str = [NSString stringWithFormat:@"%0*d:%0*d", 2, currentHour, 2, currentMinute];
-            self.timeSelectorLabel.text = str;
+            str = [NSString stringWithFormat:@"%d:%0*d %@", hour, 2, minute, splitStr];
         }
     }
+    
+    return str;
 }
 
 - (void)setSliderValue:(CGFloat)value {
@@ -169,22 +133,32 @@ static const int MinutesStep = 5;
 - (void)setSliderValue:(CGFloat)value animated:(BOOL)animated {
     _sliderValue = value;
     
-    CGFloat height = self.frame.size.height - self.timeSelectorLabel.frame.size.height;
     CGRect newFrame = self.timeSelectorLabel.frame;
-    newFrame.origin.y = value * height;
+    if (self.sliderOrientation == OrientationHorizontal) {
+        CGFloat width = self.frame.size.width - self.timeSelectorLabel.frame.size.width;
+        newFrame = self.timeSelectorLabel.frame;
+        newFrame.origin.x = value * width;
+    } else if (self.sliderOrientation == OrientationVertical) {
+        CGFloat height = self.frame.size.height - self.timeSelectorLabel.frame.size.height;
+        newFrame = self.timeSelectorLabel.frame;
+        newFrame.origin.y = value * height;
+    }
     
     if ([self.delegate respondsToSelector:@selector(timeSliderViewWillStartMoving:)]) {
         [self.delegate timeSliderViewWillStartMoving:self];
     }
     
     if (animated) {
-        [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseIn animations:^{
-            self.timeSelectorLabel.frame = newFrame;
-        } completion:^(BOOL finished) {
-            if ([self.delegate respondsToSelector:@selector(timeSliderViewDidStopMoving:)]) {
-                [self.delegate timeSliderViewDidStopMoving:self];
-            }
-        }];
+        [UIView animateWithDuration:0.3f
+                              delay:0.0f
+                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             self.timeSelectorLabel.frame = newFrame;
+                         } completion:^(BOOL finished) {
+                             if ([self.delegate respondsToSelector:@selector(timeSliderViewDidStopMoving:)]) {
+                                 [self.delegate timeSliderViewDidStopMoving:self];
+                             }
+                         }];
     } else {
         self.timeSelectorLabel.frame = newFrame;
         
@@ -197,7 +171,7 @@ static const int MinutesStep = 5;
         [self.delegate timeSliderViewDidChangeValue:self];
     }
     
-    [self updateSlider];
+    self.timeSelectorLabel.text = [self handleUpdate];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -208,7 +182,11 @@ static const int MinutesStep = 5;
         self.isIndicatorTouched = YES;
         
         CGPoint touchCoordInIndicator = [touch locationInView:self.timeSelectorLabel];
-        self.indicatorYOffset = touchCoordInIndicator.y;
+        if (self.sliderOrientation == OrientationHorizontal) {
+            self.indicatorOffset = touchCoordInIndicator.x;
+        } else if (self.sliderOrientation == OrientationVertical) {
+            self.indicatorOffset = touchCoordInIndicator.y;
+        }
     }
 }
 
@@ -221,18 +199,27 @@ static const int MinutesStep = 5;
         UITouch *touch = [touches anyObject];
         CGPoint touchCoord = [touch locationInView:self];
         
-        CGFloat height = self.frame.size.height - self.timeSelectorLabel.frame.size.height;
-        touchCoord.y -= self.indicatorYOffset;
-        touchCoord.y = MIN(touchCoord.y, height);
-        touchCoord.y = MAX(touchCoord.y, 0);
-        
-        [self setSliderValue:touchCoord.y / height animated:NO];
+        if (self.sliderOrientation == OrientationHorizontal) {
+            CGFloat width = self.frame.size.width - self.timeSelectorLabel.frame.size.width;
+            touchCoord.x -= self.indicatorOffset;
+            touchCoord.x = MIN(touchCoord.x, width);
+            touchCoord.x = MAX(touchCoord.x, 0);
+            
+            [self setSliderValue:touchCoord.x / width animated:NO];
+        } else if (self.sliderOrientation == OrientationVertical) {
+            CGFloat height = self.frame.size.height - self.timeSelectorLabel.frame.size.height;
+            touchCoord.y -= self.indicatorOffset;
+            touchCoord.y = MIN(touchCoord.y, height);
+            touchCoord.y = MAX(touchCoord.y, 0);
+            
+            [self setSliderValue:touchCoord.y / height animated:NO];
+        }
         
         if ([self.delegate respondsToSelector:@selector(timeSliderViewDidChangeValue:)]) {
             [self.delegate timeSliderViewDidChangeValue:self];
         }
         
-        [self updateSlider];
+        self.timeSelectorLabel.text = [self handleUpdate];
     }
 }
 
@@ -240,34 +227,65 @@ static const int MinutesStep = 5;
     if (!self.isIndicatorTouched) {
         UITouch *touch = [touches anyObject];
         CGPoint touchCoord = [touch locationInView:self];
-        CGFloat trueHeight = self.frame.size.height - self.timeSelectorLabel.frame.size.height;
-        touchCoord.y = MIN(touchCoord.y, trueHeight);
-        CGFloat sliderY = self.timeSelectorLabel.frame.origin.y;
         
-        CGFloat divHeight = trueHeight / (24 * 12);
-        long hr = self.hour * 12;
-        
-        if (touchCoord.y > sliderY) { // press was made below time indicator
-            long min = (self.minute + MinutesStep) / 5;
-            sliderY = (divHeight * (hr + min)) / trueHeight;
-        } else { // press was made above time indicator
-            long min = (self.minute - MinutesStep) / 5;
-            sliderY = divHeight * (hr + min) / trueHeight;
+        if (self.sliderOrientation == OrientationHorizontal) {
+            CGFloat trueWidth = self.frame.size.width - self.timeSelectorLabel.frame.size.width;
+            touchCoord.x = MIN(touchCoord.x, trueWidth);
+            CGFloat sliderX = self.timeSelectorLabel.frame.origin.x;
+            
+            CGFloat divWidth = trueWidth / (24 * 12);
+            long hr = self.hour * 12;
+            
+            if (touchCoord.x > sliderX) { // press was made below time indicator
+                long min = (self.minute + MinutesStep) / 5;
+                sliderX = (divWidth * (hr + min)) / trueWidth;
+            } else { // press was made above time indicator
+                long min = (self.minute - MinutesStep) / 5;
+                sliderX = divWidth * (hr + min) / trueWidth;
+            }
+            
+            [self setSliderValue:sliderX animated:YES];
+        } else if (self.sliderOrientation == OrientationVertical) {
+            CGFloat trueHeight = self.frame.size.height - self.timeSelectorLabel.frame.size.height;
+            touchCoord.y = MIN(touchCoord.y, trueHeight);
+            CGFloat sliderY = self.timeSelectorLabel.frame.origin.y;
+            
+            CGFloat divHeight = trueHeight / (24 * 12);
+            long hr = self.hour * 12;
+            
+            if (touchCoord.y > sliderY) { // press was made below time indicator
+                long min = (self.minute + MinutesStep) / 5;
+                sliderY = (divHeight * (hr + min)) / trueHeight;
+            } else { // press was made above time indicator
+                long min = (self.minute - MinutesStep) / 5;
+                sliderY = divHeight * (hr + min) / trueHeight;
+            }
+
+            [self setSliderValue:sliderY animated:YES];
         }
-        
-        [self setSliderValue:sliderY animated:YES];
     }
     
     self.isIndicatorTouched = NO;
 }
 
 - (CGFloat)calculatePositionWithHour:(NSUInteger)hour minute:(NSUInteger)minute {
-    CGFloat trueHeight = self.frame.size.height - self.timeSelectorLabel.frame.size.height;
-    CGFloat divHeight = trueHeight / (24 * 12);
-    long hr = hour * 12;
-    long min = minute / 5;
-    
-    return (divHeight * (hr + min)) / trueHeight;
+    if (self.sliderOrientation == OrientationHorizontal) {
+        CGFloat trueWidth = self.frame.size.width - self.timeSelectorLabel.frame.size.width;
+        CGFloat divWidth = trueWidth / (24 * 12);
+        long hr = hour * 12;
+        long min = minute / 5;
+        
+        return (divWidth * (hr + min)) / trueWidth;
+    } else if (self.sliderOrientation == OrientationVertical) {
+        CGFloat trueHeight = self.frame.size.height - self.timeSelectorLabel.frame.size.height;
+        CGFloat divHeight = trueHeight / (24 * 12);
+        long hr = hour * 12;
+        long min = minute / 5;
+        
+        return (divHeight * (hr + min)) / trueHeight;
+    }
+
+    return 0.0f;
 }
 
 - (void)placeIndicatorViewWithHour:(NSUInteger)hour minute:(NSUInteger)minute {

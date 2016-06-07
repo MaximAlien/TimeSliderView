@@ -10,6 +10,11 @@
 
 @class TimeSliderView;
 
+typedef NS_ENUM(NSInteger, TimeSliderViewOrientation) {
+    OrientationHorizontal = 1,
+    OrientationVertical = 2
+};
+
 @protocol TimeSliderViewDelegate <NSObject>
 
 @optional
@@ -25,6 +30,7 @@
 @property (nonatomic, strong) UILabel *timeSelectorLabel;
 @property (nonatomic) CGFloat sliderValue;
 @property (nonatomic) BOOL is24HourFormat;
+@property (nonatomic) TimeSliderViewOrientation sliderOrientation;
 //TODO: Create accessor fields to get current hour and minutes (as int values) and as date/time
 
 // public methods
