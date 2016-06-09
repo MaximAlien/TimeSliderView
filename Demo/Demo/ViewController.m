@@ -31,7 +31,7 @@
     
     TimeSliderView *horizontalSliderView = [[TimeSliderView alloc] initWithFrame:CGRectMake(10, 350, 300, 40)];
     horizontalSliderView.delegate = self;
-    horizontalSliderView.is24HourFormat = YES;
+    horizontalSliderView.is24HourFormat = NO;
     horizontalSliderView.sliderOrientation = OrientationHorizontal;
     horizontalSliderView.timeSelectorLabel.textColor = [UIColor whiteColor];
     horizontalSliderView.timeSelectorLabel.backgroundColor = [UIColor lightGrayColor];
@@ -42,7 +42,7 @@
 
 - (void)timeSliderViewDidChangeValue:(TimeSliderView *)sliderView
 {
-    NSLog(@"timeSliderViewDidChangeValue : %f", sliderView.sliderValue);
+    NSLog(@"timeSliderViewDidChangeValue : %d", sliderView.hour);
 }
 
 - (void)timeSliderViewWillStartMoving:(TimeSliderView *)sliderView

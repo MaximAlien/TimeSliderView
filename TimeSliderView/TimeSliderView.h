@@ -31,9 +31,9 @@ typedef NS_ENUM(NSInteger, TimeSliderViewOrientation) {
 @property (nonatomic) CGFloat sliderValue;
 @property (nonatomic) BOOL is24HourFormat;
 @property (nonatomic) TimeSliderViewOrientation sliderOrientation;
-//TODO: Create accessor fields to get current hour and minutes (as int values) and as date/time
+@property (nonatomic, readonly) int hour;
+@property (nonatomic, readonly) int minute;
 
-// public methods
 - (void)setSliderValue:(CGFloat)value animated:(BOOL)animated;
 - (void)placeIndicatorViewWithHour:(NSUInteger)hour minute:(NSUInteger)minute;
 - (void)placeIndicatorWithDate:(NSDate *)date;
