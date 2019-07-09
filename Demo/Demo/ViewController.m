@@ -2,8 +2,8 @@
 //  ViewController.m
 //  Demo
 //
-//  Created by maxim.makhun on 5/26/14.
-//  Copyright (c) 2014 MMA. All rights reserved.
+//  Created by Maxim Makhun on 5/26/14.
+//  Copyright © 2014 Maxim Makhun. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -15,8 +15,7 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     TimeSliderView *verticalSliderView = [[TimeSliderView alloc] initWithFrame:CGRectMake(10, 30, 60, 300)];
@@ -40,18 +39,15 @@
     [horizontalSliderView placeIndicatorWithDate:[NSDate date]];
 }
 
-- (void)timeSliderViewDidChangeValue:(TimeSliderView *)sliderView
-{
+- (void)timeSliderViewDidChangeValue:(TimeSliderView *)sliderView {
     NSLog(@"timeSliderViewDidChangeValue : %d", sliderView.hour);
 }
 
-- (void)timeSliderViewWillStartMoving:(TimeSliderView *)sliderView
-{
+- (void)timeSliderViewWillStartMoving:(TimeSliderView *)sliderView {
     NSLog(@"timeSliderViewWillStartMoving");
 }
 
-- (void)timeSliderViewDidStopMoving:(TimeSliderView *)sliderView
-{
+- (void)timeSliderViewDidStopMoving:(TimeSliderView *)sliderView {
     NSLog(@"timeSliderViewWillStartMoving");
 }
 

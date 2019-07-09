@@ -3,7 +3,7 @@
 //  Demo
 //
 //  Created by Maxim Makhun on 5/26/14.
-//  Copyright (c) 2014 MMA. All rights reserved.
+//  Copyright © 2014 Maxim Makhun. All rights reserved.
 //
 
 @import UIKit;

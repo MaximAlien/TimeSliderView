@@ -2,8 +2,8 @@
 //  main.m
 //  Demo
 //
-//  Created by maxim.makhun on 5/26/14.
-//  Copyright (c) 2014 MMA. All rights reserved.
+//  Created by Maxim Makhun on 5/26/14.
+//  Copyright © 2014 Maxim Makhun. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

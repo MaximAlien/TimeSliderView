@@ -3,7 +3,7 @@
 //  Demo
 //
 //  Created by Maxim Makhun on 5/26/14.
-//  Copyright (c) 2014 MMA. All rights reserved.
+//  Copyright © 2014 Maxim Makhun. All rights reserved.
 //
 
 #import "TimeSliderView.h"
@@ -170,6 +170,8 @@ static const int MinutesStep = 5;
     
     self.timeSelectorLabel.text = [self handleUpdate];
 }
+
+#pragma mark - UIResponder touch handling methods
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
